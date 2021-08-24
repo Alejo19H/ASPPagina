@@ -62,5 +62,66 @@ namespace ASP.Controllers
                 return View();
             }
         }
+        
+        public ActionResult Details(int id)
+        {
+            using (var db = new inventario2021Entities())
+            {
+                return View(db.producto.Find(id));
+            }
+        }
+
+        public ActionResult Edit(int id)
+        {
+            using (var db = new inventario2021Entities())
+            {
+                producto editProducto = db.producto.Where(a => a.id == id).FirstOrDefault();
+                return View(editProducto);
+            }
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(producto editProducto)
+        {
+            try
+            {
+                using (var db = new inventario2021Entities())
+                {
+                    var oldProducto = db.producto.Find(editProducto.id);
+                    oldProducto.nombre = editProducto.nombre;
+                    oldProducto.cantidad = editProducto.cantidad;
+                    oldProducto.descripcion = editProducto.descripcion;
+                    oldProducto.percio_unitario = editProducto.percio_unitario;
+                    oldProducto.id_proveedor = editProducto.id_proveedor;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error " + ex);
+                return View();
+            }
+        }
+
+        public ActionResult Delete(int id)
+        {
+            try
+            {
+                using (var db = new inventario2021Entities())
+                {
+                    producto producto = db.producto.Find(id);
+                    db.producto.Remove(producto);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error " + ex);
+                return View();
+            }
+        }
     }
 }
