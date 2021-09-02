@@ -1,17 +1,17 @@
 ﻿@model ASP.Models.usuariorol
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalles Usuario Rol";
 }
 
-<h2>Details</h2>
+<h2>Detalles</h2>
 
 <div>
-    <h4>usuariorol</h4>
+    <h4>Usuario Rol</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.idUsuario)
+            Usuario
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.idRol)
+            Rol
         </dt>
 
         <dd>
@@ -29,6 +29,6 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Editar", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Ver Todos", "Index")
 </p>
