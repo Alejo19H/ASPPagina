@@ -25,22 +25,26 @@
                     <li>@Html.ActionLink("Acerca de", "About", "Home")</li>
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
                     <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                        Opciones
-                        <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li>@Html.ActionLink("Usuario Crud", "Index", "Usuario")</li>
-                        <li>@Html.ActionLink("Producto Crud", "Index", "Producto")</li>
-                        <li>@Html.ActionLink("Cliente Crud", "Index", "Clientes")</li>
-                        <li>@Html.ActionLink("Proveedor Crud", "Index", "Proveedor")</li>
-                        <li>@Html.ActionLink("Roles Crud", "Index", "Roles")</li>
-                        <li>@Html.ActionLink("Producto Imagen Crud", "Index", "ProductoImagen")</li>
-                        <li>@Html.ActionLink("Compra Crud", "Index", "Compra")</li>
-                        <li>@Html.ActionLink("Producto Compra Crud", "Index", "ProductoCompra")</li>
-                        <li>@Html.ActionLink("Usuario Rol Crud", "Index", "UsuarioRol")</li>
-                    </ul>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            Opciones
+                            <span class="glyphicon glyphicon-fire" aria-hidden="true"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Usuario Crud", "Index", "Usuario")</li>
+                            <li>@Html.ActionLink("Producto Crud", "Index", "Producto")</li>
+                            <li>@Html.ActionLink("Cliente Crud", "Index", "Clientes")</li>
+                            <li>@Html.ActionLink("Proveedor Crud", "Index", "Proveedor")</li>
+                            <li>@Html.ActionLink("Roles Crud", "Index", "Roles")</li>
+                            <li>@Html.ActionLink("Producto Imagen Crud", "Index", "ProductoImagen")</li>
+                            <li>@Html.ActionLink("Compra Crud", "Index", "Compra")</li>
+                            <li>@Html.ActionLink("Producto Compra Crud", "Index", "ProductoCompra")</li>
+                            <li>@Html.ActionLink("Usuario Rol Crud", "Index", "UsuarioRol")</li>
+                        </ul>
                     </li>
+                    @if(User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Cerrar Sesión", "CloseSession", "Usuario")</li>
+                    }
                 </ul>
             </div>
         </div>

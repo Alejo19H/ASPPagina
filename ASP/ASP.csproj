@@ -284,6 +284,7 @@
     <Content Include="Views\ProductoCompra\Edit.cshtml" />
     <Content Include="Views\ProductoCompra\ListarCompra.cshtml" />
     <Content Include="Views\ProductoCompra\ListarProducto.cshtml" />
+    <Content Include="Views\Usuario\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
