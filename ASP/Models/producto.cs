@@ -11,6 +11,7 @@ namespace ASP.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class producto
     {
@@ -22,10 +23,22 @@ namespace ASP.Models
         }
     
         public int id { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        [StringLength(20, ErrorMessage = "Maximo 20 caracteres")]
         public string nombre { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public int percio_unitario { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        [StringLength(30, ErrorMessage = "Maximo 30 caracteres")]
         public string descripcion { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public int cantidad { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
         public int id_proveedor { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

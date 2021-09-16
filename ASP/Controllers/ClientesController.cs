@@ -9,6 +9,7 @@ namespace ASP.Controllers
 {
     public class ClientesController : Controller
     {
+        [Authorize]
         // GET: Clientes
         public ActionResult Index()
         {

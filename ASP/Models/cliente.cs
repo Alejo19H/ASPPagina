@@ -11,6 +11,7 @@ namespace ASP.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     
     public partial class cliente
     {
@@ -21,8 +22,17 @@ namespace ASP.Models
         }
     
         public int id { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        [StringLength(20, ErrorMessage = "Maximo 20 caracteres")]
         public string nombre { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        [StringLength(10, ErrorMessage = "Maximo 10 caracteres")]
         public string documento { get; set; }
+
+        [Required(ErrorMessage = "El campo es obligatorio")]
+        [DataType(DataType.EmailAddress)]
         public string email { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
