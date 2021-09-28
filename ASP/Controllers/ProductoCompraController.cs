@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ASP.Models;
+using Rotativa;
 
 namespace ASP.Controllers
 {
@@ -137,6 +138,65 @@ namespace ASP.Controllers
                 ModelState.AddModelError("", "error " + ex);
                 return View();
             }
+        }
+
+        public ActionResult Reporte()
+        {
+            try
+            {
+                var db = new inventario2021Entities();
+                var query = from tabCompra in db.compra
+                            join tabProductoCompra in db.producto_compra on tabCompra.id equals tabProductoCompra.id_compra
+                            join tabCliente in db.cliente on tabCompra.id_cliente equals tabCliente.id
+                            join tabProducto in db.producto on tabProductoCompra.id_producto equals tabProducto.id
+                            select new ReporteCompra
+                            {
+                                nombreCliente = tabCliente.nombre,
+                                fechaCompra = tabCompra.fecha,
+                                nombreProducto = tabProducto.nombre,
+                                cantidadProducto = tabProductoCompra.cantidad,
+                                precioProducto = tabProducto.percio_unitario,
+                                totalProducto = (tabProductoCompra.cantidad * tabProducto.percio_unitario)
+                            };
+                return View(query);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error " + ex);
+                return View();
+            }
+        }
+
+        public ActionResult Descarga()
+        {
+            try
+            {
+                var db = new inventario2021Entities();
+                var query = from tabCompra in db.compra
+                            join tabProductoCompra in db.producto_compra on tabCompra.id equals tabProductoCompra.id_compra
+                            join tabCliente in db.cliente on tabCompra.id_cliente equals tabCliente.id
+                            join tabProducto in db.producto on tabProductoCompra.id_producto equals tabProducto.id
+                            select new ReporteCompra
+                            {
+                                nombreCliente = tabCliente.nombre,
+                                fechaCompra = tabCompra.fecha,
+                                nombreProducto = tabProducto.nombre,
+                                cantidadProducto = tabProductoCompra.cantidad,
+                                precioProducto = tabProducto.percio_unitario,
+                                totalProducto = (tabProductoCompra.cantidad * tabProducto.percio_unitario)
+                            };
+                return View(query);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "error " + ex);
+                return View();
+            }
+        }
+
+        public ActionResult PdfReporte()
+        {
+            return new ActionAsPdf("Descarga") { FileName = "Reporte.pdf" };
         }
     }
 }
